@@ -214,3 +214,79 @@ void buscar_libros(list<Libro> lista_libros){ //Funcion de buscar libro
     } 
     } while (status); 
 }
+///////////////////////////////////////////////
+void mostrar_librosdisp(list<Libro> lista_li){   
+    list<Libro> nueva_lista = lista_li;
+    if (nueva_lista.empty()){
+        cout <<char(173)<<"La lista est"<< char(160) <<" vacia!" << endl;
+    }
+    else if (!nueva_lista.empty()){
+        
+            while (!nueva_lista.empty()){
+            cout<<"\nNombre del libro: "<<nueva_lista.back().nombre<<endl;
+            cout<<"Autor del libro: "<<nueva_lista.back().autor<<endl;
+            cout<<"Genero del libro: "<<nueva_lista.back().genero<<endl;
+            cout<<"ISBN del libro: "<<nueva_lista.back().isbn<<endl;
+            nueva_lista.pop_back();
+            cout<<endl;
+            }
+    }      
+}
+
+void alquilar(){ //Al alquilar un libro, este se elimina de la lista.
+    string libro_alq;
+    bool status = true;
+    int opc;
+    
+    do { 
+    cout << char(168) <<"Que" << char(130) <<" desea hacer?" << endl;
+    cout << "1) Alquilar libro" << endl;
+    cout << "2) Regresar" << endl;
+    cout << "Opci" << char(162) << "n: "; cin >> opc;
+
+    switch (opc){
+        case 1:
+            cin.ignore();
+            cout<<"Ingrese el nombre completo del cliente: ";
+            getline(cin, cliente.nombre);
+            cout<<"Ingrese el numero de cliente: ";
+            cin>>cliente.numero_cliente;
+            cin.ignore();
+            cout<<"Ingrese el nombre del libro que desea alquilar: ";
+            getline(cin, libro_alq);
+
+                if(!lista_libros.empty()){
+            
+                            auto l = find_if(lista_libros.begin(), lista_libros.end(), [&libro_alq](const Libro &l)
+                            {
+                            return l.nombre == libro_alq;}); 
+
+                            if (l == lista_libros.end())
+                            cout << "El libro con nombre: " <<cliente.nombre_libro << " no ha sido encontrado."<<endl;
+                                
+                            else
+                                cliente.nombre_libro = libro_alq;
+                                
+                                cout << "El libro "<< cliente.nombre_libro <<" ha sido alquilado exitosamente. "<<endl;
+                                lista_libros.erase(l);
+                                cola_cliente.push(cliente);
+                }
+                else
+                {
+                    cout<<"No hay libros disponibles para alquilar."<<endl;
+                }
+            break;
+        
+        case 2: 
+            cout << "Regresando al menu principal...\n";
+            status = false;
+            menu_principal();
+            break;
+        default:
+            break;
+        }
+    
+    } while (status);
+
+}
+/////////////////////////////////////////////////////////
