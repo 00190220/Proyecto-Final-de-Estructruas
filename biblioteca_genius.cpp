@@ -55,7 +55,7 @@ void menu_principal(){ //menu principal
     {
       
         cout<<endl<<"------------------ MENU PRINCIPAL -------------------"<<endl;
-        cout<<"Bienvenido a Biblioteca UCA, "<<endl<<"por favor ingrese la opcion que desea elegir: "<<endl;
+        cout<<"Bienvenido a Biblioteca Genius, "<<endl<<"por favor ingrese la opcion que desea elegir: "<<endl;
         cout<<"1) Agregar libros\t" << "\t2) Buscar libros" << endl;
         cout<<"3) Mostrar libros disponibles\t" << "4) Alquilar libro" << endl;
         cout<<"5) Devolver libro\t" << "\t6) Mostrar libros retornados"<<endl; 
