@@ -149,3 +149,68 @@ void agregar_libro(list<Libro>lista_li){ //Funcion de agregar libro
 
     } while (status);
 }
+void buscar_libros(list<Libro> lista_libros){ //Funcion de buscar libro
+    int isbn_buscar, opc;
+    string nombre_libro;
+    list <Libro> aux_lista = lista_libros;
+    bool status = true;
+
+    do
+    {
+        cout << "Buscar por: "<<endl;
+        cout << "1) Nombre del libro\n";
+        cout << "2) ISBN" << endl;
+        cout << "3) Regresar" <<endl;
+        cout << "Opci"<<char(162)<<"n: "; cin >> opc; cout << endl;
+        cin.ignore();
+
+            switch (opc) {
+                case 1:
+                    cout << "Ingresa el nombre del libro a buscar: ";
+                    getline(cin,nombre_libro);
+                        if(lista_libros.empty()){
+                            cout<<"No hay libros disponibles en este momento."<<endl;
+                        return;
+                        }
+                            else {
+      
+                                auto l = find_if(lista_libros.begin(), lista_libros.end(), [&nombre_libro](const Libro &l)
+                                    {return l.nombre == nombre_libro;}); 
+
+                                if (l == lista_libros.end())
+                                    cout << "El libro con nombre: " << nombre_libro << " no ha sido encontrado.\n\n";
+                         
+                                else
+                                    cout << "El libro "<< nombre_libro <<" se encuentra disponible. "<<endl <<endl;
+                            }
+                    break;
+
+                case 2: 
+                    cout << "Ingrese el ISBN del libro: ";
+                    cin >> isbn_buscar;
+                        if(lista_libros.empty()){
+                            cout<<"No hay libros disponibles en este momento."<<endl;
+                            return;
+                        }
+                        else {
+                            auto l = find_if(lista_libros.begin(), lista_libros.end(), [&isbn_buscar](const Libro &l)
+                                {
+								return l.isbn == isbn_buscar;}); 
+
+                                if (l == lista_libros.end())
+                                    cout << "El libro con ISBN: " << isbn_buscar << " no ha sido encontrado."<<endl;
+                                else
+                                cout << "El libro "<< isbn_buscar <<" se encuentra disponible. "<<endl;
+                        }          
+                break;
+                case 3: 
+                    cout << "Regresando al menu principal..." << endl;
+                    menu_principal();
+                    status = false;
+                break;
+            default: 
+                cout << "Opci" <<char(162)<<"n no disponible."<<endl;
+            break;
+    } 
+    } while (status); 
+}
