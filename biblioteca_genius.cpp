@@ -290,3 +290,80 @@ void alquilar(){ //Al alquilar un libro, este se elimina de la lista.
 
 }
 /////////////////////////////////////////////////////////
+
+void devolver_libro(){ //Función para devolver libro
+
+
+
+    Devolver devolver;
+    int opcion;
+
+    cout<<"1) Devolver libro "<<endl;
+    cout<<"2) Regresar al menu principal"<<endl;
+    cout<<"Opcion: ";
+    cin>>opcion;
+    cin.ignore();
+    switch (opcion)
+    {
+    case 1: 
+        cout<<"Ingrese el nombre del cliente: ";
+        getline(cin, devolver.nombre);
+        cout<<"Ingrese el numero de cliente: ";
+        cin>>devolver.numero_cliente;
+        cin.ignore();
+        cout<<"Ingrese el nombre del libro que desea devolver: ";
+        getline(cin, devolver.devol_libro.nombre);
+        cout<<"Ingrese el g"<<char(130)<<"nero del libro: ";
+        getline(cin, devolver.devol_libro.genero);
+        cout<<"Ingrese el autor del libro: ";
+        getline(cin, devolver.devol_libro.autor);
+        cout<<"Ingrese el ISBN del libro: ";
+        cin>>devolver.devol_libro.isbn;
+
+        devolv_libro.push(devolver);
+
+
+        cout<<"Se ha devuelto el libro con exito! "<<endl;
+        break;
+
+    case 2: 
+        menu_principal();
+        break;
+    default:
+        cout<<"Opcion no valida. Por favor intente nuevamente."<<endl;
+        break;
+    }  
+}
+
+ostream& operator<<(std::ostream& o, const Devolver& d) {//Sobrecarga del operator << para poder mostrar la pila de libros que han sido devueltos de la estructura Devolver
+            // Usas o como si fuera cout
+
+            o<<"Nombre del cliente: "<< d.nombre<<endl;
+            o<<"Numero del cliente: "<< d.numero_cliente<<endl;
+            o<<"Nombre del libro: "<< d.devol_libro.nombre<<endl;
+            o<<"G"<<char(130)<<"nero del libro:"<< d.devol_libro.genero<<endl;
+            o<<"Autor del libro: "<< d.devol_libro.autor<<endl;
+            o<<"ISBN del libro: "<< d.devol_libro.isbn<<endl;
+           
+            return o;
+}
+
+void mostrar_librosreturn(stack<Devolver> devolver) { //Funcion que muestra los libros que han sido devueltos
+    stack<Devolver> pila_aux = devolver;
+    cout<<"----MOSTRANDO LIBROS DEVUELTOS----"<<endl<<endl;
+
+    if (pila_aux.empty())
+    {
+        cout<<"No hay libros devueltos."<<endl;
+    }else
+    {
+        while (!pila_aux.empty()){
+         cout<<pila_aux.top()<<endl;
+         pila_aux.pop();             
+        }
+    }
+    
+    
+
+    
+}
