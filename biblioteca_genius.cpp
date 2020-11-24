@@ -382,7 +382,6 @@ void buscar_clientes(){ //Se buscará en la cola.
                 break;
 
             }else{
-                cout << "El cliente no existe.\n";
                aux.pop();
             }
     
