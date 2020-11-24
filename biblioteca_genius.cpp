@@ -59,7 +59,7 @@ void menu_principal(){ //menu principal
         cout<<"1) Agregar libros\t" << "\t2) Buscar libros" << endl;
         cout<<"3) Mostrar libros disponibles\t" << "4) Alquilar libro" << endl;
         cout<<"5) Devolver libro\t" << "\t6) Mostrar libros retornados"<<endl; 
-        cout<<"7) Mostrar clientes\t" << "\t8) Buscar clientes\n" << "9) Salir"<<endl;  
+        cout<<"7) Historial de clientes" << "\t8) Buscar clientes\n" << "9) Salir"<<endl;  
         cout<<"Opci"<<char(162)<<"n: ";
         cin>>opcion; cout <<endl;
         
@@ -79,17 +79,14 @@ void menu_principal(){ //menu principal
             break;
         case 5:
             devolver_libro();
-            
             break;
         case 6:
             mostrar_librosreturn(devolv_libro);
-            
             break;
         case 7:
             mostrar_clientes(cola_cliente);
             break;
         case 8:
-          
             buscar_clientes();
             break;
         case 9: 
