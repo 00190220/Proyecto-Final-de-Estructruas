@@ -364,3 +364,46 @@ void mostrar_librosreturn(stack<Devolver> devolver) { //Funcion que muestra los 
 
     
 }
+void buscar_clientes(){ //Se buscará en la cola.
+    Cliente nombre;
+
+    queue<Cliente> aux = cola_cliente;
+    
+    if(cola_cliente.empty()){
+        cout<<"No hay clientes en la cola. "<<endl;
+    }
+    else{
+        cout<<"Ingrese el nombre del cliente: ";
+        cin.ignore();
+        getline(cin, nombre.nombre);
+        while(!aux.empty()){
+            if(nombre.nombre == aux.front().nombre){
+                cout<<"El cliente se ha encontrado en la cola. "<<endl;
+                break;
+
+            }else{
+                cout << "El cliente no existe.\n";
+               aux.pop();
+            }
+    
+        }
+         
+    }
+}
+
+std::ostream& operator<<(std::ostream& o, const Cliente& d) { //Sobrecarga del operator << para poder mostrar la cola de clientes de la estructura Client
+        // Usas o como si fuera cout
+            o<<"Nombre del cliente: "<<d.nombre<<endl;
+            o<<"Numero del cliente: "<<d.numero_cliente<<endl;
+            o<<"Libro alquilado: "<<d.nombre_libro<<endl;
+  return o;
+}
+
+void mostrar_clientes(queue<Cliente> q) { //Funcion que muestra la cola de clientes que han alquilado un libro
+    queue<Cliente> clone = q;
+     cout << "Los clientes que tienen un libro alquilado son: "<<endl;
+    while (!clone.empty()) {
+      cout<< clone.front() << endl;
+        clone.pop();
+    }
+}
