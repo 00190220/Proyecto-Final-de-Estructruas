@@ -2,7 +2,7 @@
 
 Integrantes: 
 			
-- Rodrigo Alberto Arias Rodriguez 0049620
+- Rodrigo Alberto Arias Rodriguez 00049620
 - Fernando Antonio Ortega Alemán 00191820
 - Juan Guillermo Rodas Ramirez 00190220
 - Francisco Edgardo Sosa Escobar 00357518
